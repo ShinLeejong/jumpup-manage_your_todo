@@ -1,30 +1,37 @@
 <script>
-	export let name;
+import Content from "./components/Content.svelte";
+import Footer from "./components/Footer.svelte";
+import Header from "./components/Header.svelte";
+import background from "./assets/background.jpg";
+
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<svelte:head>
+	<title>Jump Up - Manage Your Todo Simply</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+</svelte:head>
 
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+<div id="background" style="background-image: url({background});">
+	<div id="container">
+		<Header />
+		<Content />
+		<Footer />
+	</div>
+</div>
+
+<style scoped>
+	#background {
+		background-repeat: no-repeat;
+		background-size: cover;
+		animation-duration: 0.5s;
+		animation-name: fadein;
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+	#container {
+		display: flex;
+		height: 100vh;
+		flex-direction: column;
 	}
 </style>

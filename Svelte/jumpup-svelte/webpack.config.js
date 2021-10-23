@@ -48,7 +48,13 @@ module.exports = {
 				resolve: {
 					fullySpecified: false
 				}
-			}
+			},
+			{
+				test: /\.(gif|svg|jpg|png)$/,
+				use: {
+					loader: 'file-loader',
+				}
+			},
 		]
 	},
 	mode,

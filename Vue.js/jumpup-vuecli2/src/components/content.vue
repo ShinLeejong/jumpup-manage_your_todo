@@ -71,7 +71,6 @@ export default {
                     alert("중복된 메시지로 작성된 todo가 존재합니다.");
                     return;
                 }
-                console.log(this.todo);
                 this.todos.push({
                     message: this.todo,
                     timestamp: {
@@ -90,7 +89,6 @@ export default {
         },
     },
     mounted() {
-        console.log("Mounted successfully");
         setInterval(() => {
             this.date = new Date();
         }, 1000);

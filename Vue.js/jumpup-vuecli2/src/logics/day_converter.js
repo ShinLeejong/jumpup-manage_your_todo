@@ -23,8 +23,6 @@ const Day_converter = day => {
         case 0: 
             _ret = "일";
             break;
-        default:
-            console.error("error occurred while converting day - day_converter.js");
     }
 
     return _ret;

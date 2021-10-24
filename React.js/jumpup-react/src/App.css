@@ -1,0 +1,12 @@
+#background {
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation-duration: 0.5s;
+    animation-name: fadein;
+}
+
+#container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}

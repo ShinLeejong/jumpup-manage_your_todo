@@ -1,0 +1,33 @@
+footer {
+    position: relative;
+    display: flex;
+    background: lightcoral;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    opacity: 0.8;
+    font-size: 0.6rem;
+}
+
+#footer--title {
+    padding-bottom: 0.5rem;
+}
+
+#contact {
+    padding: .25rem 0;
+    text-align: center;
+    border-top: 1px solid black;
+    padding-top: .5rem;
+}
+
+#contact--navigator {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#contact--navigator * {
+    width: 10em;
+    cursor: pointer;
+    text-align: center;
+}

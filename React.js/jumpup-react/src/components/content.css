@@ -1,0 +1,91 @@
+main {
+    flex-grow: 1;
+    background: lightgoldenrodyellow;
+    opacity: 0.8;
+}
+
+#content {
+    display: flex;
+    height: 100%;
+}
+
+/* ////////////////////////////////////////////////////////// */
+/* todowriter */
+#todowriter--container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem;
+}
+
+#todowriter--container > * {
+    padding: 1rem 0;
+}
+
+#todowriter--janus {
+    display: flex;
+    justify-content: center;
+}
+
+#todowriter--janus p {
+    font-size: 5rem;
+    padding: 0 0.5rem;
+}
+
+#todowriter {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 2rem;
+}
+
+#todowriter > p {
+    padding-bottom: 1.5rem;
+}
+
+#todowriter > textarea {
+    background: inherit;
+    border: none;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-bottom: 1px solid black;
+    width: 30rem;
+    resize: none;
+    overflow: hidden;
+}
+
+/* ////////////////////////////////////////////////////////// */
+/* todobox */
+
+#todobox--container {
+    flex: 1;
+    display: flex;
+    padding: 5rem;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#todobox--container ul {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    animation-duration: 1s;
+    animation-name: fadein;
+}
+
+#todobox--container li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid black;
+}
+
+#todobox--message {
+    flex: 2;
+}
+
+#todobox--session {
+    flex: 1;
+}

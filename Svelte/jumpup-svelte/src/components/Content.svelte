@@ -16,6 +16,7 @@
     $: second = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
 
     onMount(() => {
+        console.log("Mounted successfully");
         const clock = setInterval(() => {
             date = new Date();
         }, 1000);

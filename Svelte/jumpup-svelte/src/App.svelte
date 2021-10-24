@@ -1,7 +1,7 @@
 <script>
+import Header from "./components/Header.svelte";
 import Content from "./components/Content.svelte";
 import Footer from "./components/Footer.svelte";
-import Header from "./components/Header.svelte";
 import background from "./assets/background.jpg";
 
 </script>

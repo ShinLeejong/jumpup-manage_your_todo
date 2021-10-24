@@ -1,4 +1,4 @@
-export default () => {
+const Get_date = () => {
     let today = new Date();   
     
     let year = today.getFullYear();
@@ -11,5 +11,7 @@ export default () => {
         month,
         date,
         day
-    }
+    };
+
 }
+export default Get_date;

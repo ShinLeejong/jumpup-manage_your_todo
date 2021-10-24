@@ -6,27 +6,31 @@ const Content = () => {
     const [todo, setTodo] = useState('');
     const [todos, setTodos] = useState([]);
 
-    const [hour, setHour] = useState(0)
-    const [minute, setMinute] = useState(0);
-    const [second, setSecond] = useState(0);
+    const [time, setTime] = useState({
+        hour: 0,
+        minute: 0,
+        second: 0,
+    })
 
     const [flag, setFlag] = useState(false);
 
     useEffect(() => {
         function timeout() {
             const date = new Date();
-            setHour(date.getHours() < 12 ? date.getHours() : date.getHours() - 12);
-            setMinute(date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes());
-            setSecond(date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
-        }
+            setTime({
+                hour: date.getHours() < 12 ? date.getHours() : date.getHours() - 12,
+                minute: date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes(),
+                second: date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds(),
+            });
+        };
 
         setTimeout(timeout, 1000);
 
         return () => clearTimeout(timeout);
-    })
+    });
 
     const onKeyPress = (keycode) => {
-        if (keycode.charCode == 13) {
+        if (keycode.charCode === 13) {
             if (todos.length > 10) {
                 alert("설정된 todo가 너무 많습니다.\n" +
                         "필요없는 todo를 지우고 다시 시도해주세요.");
@@ -36,46 +40,36 @@ const Content = () => {
                 alert("너무 자주 todo를 등록하지 말아주세요.");
                 return;
             }
+            const duplicateChecker = () => {
+                return todos.filter(todo => todo.message === todo)
+            }
+            if (duplicateChecker().length !== 0) {
+                alert("중복된 메시지로 작성된 todo가 존재합니다.");
+                return;
+            }
             setTodos([
                 ...todos,
                 {
                     message: todo,
                     timestamp: {
-                        hour,
-                        minute,
-                        second,
+                        hour: time.hour,
+                        minute: time.minute,
+                        second: Number(time.second),
                     },
                 }
-            ])
+            ]);
             console.log(todos);
-            setTodo('');
             keycode.preventDefault();
             setFlag(true);
             setTimeout(() => {
                 setFlag(false);
-            }, 1000)
+            }, 1000);
         }
-    }
+    };
 
     const onRemoveClicked = message => {
         setTodos(todos.filter(todo => todo.message !== message));
-    }
-
-    const todos_box = todos.map(todo => (
-        <ul key={todo.message}>
-            <li id="todobox--message">
-                {todo.message}
-            </li>
-            <li id="todobox--session">
-                <div id="timestamp">
-                    {todo.timestamp.hour} : {todo.timestamp.minute} : {todo.timestamp.second}
-                </div>
-                <div id="remove" onClick={onRemoveClicked(todo.message)}>
-                    X
-                </div>
-            </li>
-        </ul>
-    ));
+    };
 
     return (
         <main>
@@ -83,7 +77,7 @@ const Content = () => {
                 <section id="todowriter--container">
                     <div id="todowriter--janus">
                         <p>
-                            {hour} : {minute} : {second}
+                            {time.hour} : {time.minute} : {time.second}
                         </p>
                         <p>
                             {(new Date().getHours - 6) < 12 ? '☾': '☀'}
@@ -99,7 +93,23 @@ const Content = () => {
                 {
                     todos.length > 0 &&
                     <section id="todobox--container">
-                        {todos_box}
+                        {
+                            todos.map(todo => (
+                                <ul key={todo.message}>
+                                    <li id="todobox--message">
+                                        {todo.message}
+                                    </li>
+                                    <li id="todobox--session">
+                                        <div id="timestamp">
+                                            {todo.timestamp.hour} : {todo.timestamp.minute} : {todo.timestamp.second}
+                                        </div>
+                                        <div id="remove" onClick={() => onRemoveClicked(todo.message)}>
+                                            X
+                                        </div>
+                                    </li>
+                                </ul>
+                            ))
+                        }
                     </section>
                 }
             </div>

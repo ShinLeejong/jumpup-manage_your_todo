@@ -9,8 +9,7 @@ const Footer = () => {
                         This application is made by Shin Leejong - KNUT, 1444018; for a graduation thesis.
                     </p>
                 </div>
-            </div>
-            <div>
+                <div>
                 <p id="contact">Contact Me</p>
                 <div id="contact--navigator">
                     <a href="https://github.com/ShinLeejong" target="_blank" rel="noreferrer">
@@ -24,7 +23,8 @@ const Footer = () => {
                     </a>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
     );
 };
 

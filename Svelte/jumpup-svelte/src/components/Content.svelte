@@ -33,6 +33,13 @@
                 alert("너무 자주 todo를 등록하지 말아주세요.");
                 return;
             }
+            const duplicateChecker = () => {
+                return todos.filter(todo => todo.message === todo)
+            }
+            if (duplicateChecker().length !== 0) {
+                alert("중복된 메시지로 작성된 todo가 존재합니다.");
+                return;
+            }
             todos.push({
                 message: todo,
                 timestamp: {
@@ -40,7 +47,7 @@
                     minute,
                     second
                 },
-            })
+            });
             todo = '';
             keycode.preventDefault();
             todos = todos;
@@ -54,7 +61,6 @@
     /* todowriter logic */
 
     const onRemoveClicked = message => {
-        console.log(message)
         todos = todos.filter(todo => todo.message !== message);
     }
 
@@ -68,7 +74,7 @@
                     {hour} : {minute} : {second}
                 </p>
                 <p>
-                    {date.getHours() < 12 ? '☀': '☾'}
+                    {(new Date().getHours - 6) < 12 ? '☾': '☀'}
                 </p>
             </div>
             <div id="todowriter">

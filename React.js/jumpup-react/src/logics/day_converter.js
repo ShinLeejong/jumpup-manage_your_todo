@@ -1,4 +1,4 @@
-export default (day) => {
+const Day_converter = day => {
     let _ret;
 
     switch (day) {
@@ -29,3 +29,5 @@ export default (day) => {
 
     return _ret;
 }
+
+export default Day_converter;

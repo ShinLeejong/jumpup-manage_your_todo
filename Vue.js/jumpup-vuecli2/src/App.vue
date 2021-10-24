@@ -14,6 +14,8 @@
 import Header from "./components/header.vue";
 import Content from "./components/content.vue";
 import Footer from "./components/footer.vue";
+import './reset.css';
+import './global.css';
 
 export default {
   name: 'App',
@@ -25,17 +27,5 @@ export default {
 }
 </script>
 
-<style scoped>
-	#background {
-		background-repeat: no-repeat;
-		background-size: cover;
-		animation-duration: 0.5s;
-		animation-name: fadein;
-	}
-
-	#container {
-		display: flex;
-		height: 100vh;
-		flex-direction: column;
-	}
+<style>
 </style>
